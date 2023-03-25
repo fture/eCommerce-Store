@@ -1,7 +1,7 @@
 from decimal import Decimal
-from sqlalchemy import Column, String, Integer, Boolean, Text, ForeignKey, Numeric
+from sqlalchemy import Column, String, Integer, ForeignKey, Numeric
 from sqlalchemy.dialects.postgresql import UUID
-
+import psycopg2
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
