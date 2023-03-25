@@ -74,8 +74,8 @@ class Bag(Base):
     product_id = Column(
         UUID(as_uuid=True), ForeignKey("products.product_id", ondelete="SET NULL")
     )
-    customer = relationship("customers", backref="bags")
-    product = relationship("products", backref="bags")
+    customer = relationship("Customer", backref="bags")
+    product = relationship("Product", backref="bags")
 
 
 class Order(Base):
@@ -94,4 +94,4 @@ class Order(Base):
     price = Column(
         Numeric(precision=12, scale=2, decimal_return_scale=2), nullable=False
     )
-    bag = relationship("bags", backref="orders")
+    bag = relationship("Bag", backref="orders")
