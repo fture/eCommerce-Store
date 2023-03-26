@@ -1,7 +1,6 @@
 from decimal import Decimal
 from sqlalchemy import Column, String, Integer, ForeignKey, Numeric
 from sqlalchemy.dialects.postgresql import UUID
-import psycopg2
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql.expression import text
 from sqlalchemy.sql.sqltypes import TIMESTAMP
@@ -20,6 +19,7 @@ class Customer(Base):
     )
     customer_first_name = Column(String(255), nullable=False)
     customer_last_name = Column(String(255), nullable=False)
+    password = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
     phonenum = Column(String(30), nullable=False, unique=True)
     created_at = Column(
@@ -74,7 +74,7 @@ class Bag(Base):
     product_id = Column(
         UUID(as_uuid=True), ForeignKey("products.product_id", ondelete="SET NULL")
     )
-    customer = relationship("Customer", backref="bags")
+    customer = relationship("Customer", backref="bags", foreign_keys=[customer_id])
     product = relationship("Product", backref="bags")
 
 
