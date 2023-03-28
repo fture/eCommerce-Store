@@ -82,7 +82,7 @@ async def delete(product_id: str, db: AsyncSession = Depends(get_db)):
     target_product = await db.get(models.Product, product_id)
     if not target_product:
         raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
+            status_code=404,
             detail=f"Product_id {product_id} not found",
         )
 

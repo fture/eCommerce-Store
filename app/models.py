@@ -21,7 +21,7 @@ class Customer(Base):
     customer_last_name = Column(String(255), nullable=False)
     password = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False, unique=True)
-    phonenum = Column(String(30), nullable=False, unique=True)
+    phonenum = Column(String(30), nullable=True, unique=True)
     created_at = Column(
         TIMESTAMP(timezone=True), nullable=False, server_default=text("now()")
     )
