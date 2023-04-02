@@ -49,7 +49,24 @@ class CustomerUpdate(BaseModel):
     customer_first_name: Optional[str]
     customer_last_name: Optional[str]
     password: Optional[str]
-    email: Optional[str]
     phonenum: Optional[str]
     bag_id: Optional[UUID]
     order_id: Optional[UUID]
+
+
+class TokenData(BaseModel):
+    id: Optional[UUID] = None
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class CustomerLogin(BaseModel):
+    password: Optional[str]
+    email: Optional[str]
+    customer_id: Optional[UUID]
+
+    class Config:
+        orm_mode = True
