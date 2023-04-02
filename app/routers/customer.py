@@ -78,4 +78,4 @@ async def delete_user(customer_id: str, db: AsyncSession = Depends(get_db)):
         )
     await db.delete(target_customer)
     await db.commit()
-    return {"msg": "Delete customer successed"}
+    return {"msg": "Delete customer successed !"}
